@@ -28,13 +28,13 @@ class PersonaViewSet (viewsets.ModelViewSet):
         #consulta de base de datos el id solicitado
         persona = Persona.objects.get(pk=id)
         #consulta de la api extrerna datos segun el identificados proporcionado
-        response = requests.get("https://jsonplaceholder.typicode.com/users/"+id)
+        response = requests.get("http://localhost:8080/api/catalogo/"+id + "/")
         #en caso de una respuesta satisfactoria de la api externa, se produce a completar datos
         #en base de datos y se retorna la respuesta al cliente
         if response.status_code ==200:
             data = response.json()
-            persona.email = data['email']
-            persona.phone = data['phone']
+            persona.sintoma = data['sintoma']
+            persona.diagnostico = data['diagnostico']
             persona.save()
             #prepara un serializador para mapear la entidad a JSON
             serializer = PersonaSerializer(persona)

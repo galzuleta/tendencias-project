@@ -14,5 +14,5 @@ class Persona (models.Model):
     nacionalidad = models.CharField(max_length=80)
     titulo = models.ForeignKey(Docentes, on_delete=models.PROTECT)
     matricula = models.ForeignKey(Estudiantes, on_delete=models.PROTECT)
-    email =  models.CharField(max_length=80)
-    phone =  models.CharField(max_length=80)
+    sintoma =  models.CharField(max_length=80)
+    diagnostico =  models.CharField(max_length=80)
